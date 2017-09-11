@@ -1,0 +1,23 @@
+{
+  "msg":"ok",
+  "code": 0,
+  "router":[
+    
+    {
+      "path": "example",
+      "name": "综合实例",
+      "children": [
+        {
+          "path": "table",
+          "name": "Table",
+          "children": [
+            { "path": "dynamictable",  "name": "动态table" },
+            { "path": "dragtable",  "name": "拖拽table" },
+            { "path": "inline_edit_table",  "name": "table内编辑" }
+          ]
+        },
+        
+        { "path": "index",   "name": "Tab" }
+      ]
+    }
+]}
