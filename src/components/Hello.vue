@@ -1,30 +1,39 @@
 <template>
   <div class="hello">
     <ul class="nav-menu">
-      <li v-for="item in routers" class="menu-item" @click="routerTo(item)">{{item.name}}</li>
-      <!-- <li class="menu-item active">商品</li>
-      <li class="menu-item">施工</li>
-      <li class="menu-item">财务</li>
-      <li class="menu-item">用户</li> -->
+      <li v-for="(item, index) in routers" @click="routerTo(index)" class="menu-item">
+      {{item.name}}
+      </li>
     </ul>
-    <router-view></router-view>
+    <example :items="routers[index]"></example>
   </div>
 </template>
 
 <script>
+import routers from '@/router/router'
+import example from './example'
 export default {
   name: 'hello',
   data () {
     return {
-      menu: ''
+      routers: routers.router,
+      index: 0
+    }
+  },
+  computed:{
+    items(){
+      return this.routers[this.index]
     }
   },
   created(){
+   
+  },
+  components:{
+    example
   },
   methods:{
-    routerTo(obj){
-      
-      this.$router.push({path:obj.path})
+    routerTo(index){
+      this.index = index
     }
   }
 }

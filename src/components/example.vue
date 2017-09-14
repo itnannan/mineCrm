@@ -1,53 +1,27 @@
 <template>
   <div class="mid clearfix">
     <ul class="mid-ul">
-      <li class="item-level">
-        <h3 class="leavl-h" @click="routeTo">交易管理</h3>
-        <ul class="mid-ul2">
-          <li class="item-level2">商城订单</li>
-          <li class="item-level2">订单查询与跟踪</li>
-          <li class="item-level2">订单查询与跟踪</li>
-          <li class="item-level2">订单查询</li>
-        </ul>
-      </li>
-      <li class="item-level">
-        <h3 class="leavl-h">交易管理2</h3>
-        <ul class="mid-ul2">
-          <li class="item-level2">商城订单</li>
-          <li class="item-level2">订单查询与跟踪</li>
-        </ul>
-      </li>
-      <li class="item-level">
-        <h3 class="leavl-h">交易管理3</h3>
-        <ul class="mid-ul2">
-          <li class="item-level2">订单查询与跟踪</li>
-          <li class="item-level2">订单查询</li>
-        </ul>
-      </li>
+      <sidebar :sidebar="items">
+      </sidebar>
     </ul>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import sidebar from './sidebar'
 export default {
   data () {
     return {
-      path:'',
-      children:{}
     }
   },
-  beforeRouteEnter(to, from, next){
-    //this.path = to.path.substring(1)
-    next()
+  props:{
+    items: Object
   },
   created(){
-    console.log(this.path)
   },
-  methods:{
-    routeTo(){
-      this.$router.push({path:'aaa'})
-    }
+  components:{
+    sidebar
   }
 }
 </script>

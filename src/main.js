@@ -12,69 +12,7 @@ import './styles/common.css';
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 let isAdd = false
-router.beforeEach((to, from, next) => {
-	Vue.prototype.routers = [
-		{
-			"path": "example",
-			"name": "综合实例",
-			"children": [
-			{
-				"path": "table",
-				"name": "Table",
-				"children": [
-				{ "path": "dynamictable",  "name": "动态table" },
-				{ "path": "dragtable",  "name": "拖拽table" },
-				{ "path": "inline_edit_table",  "name": "table内编辑" }
-				]
-			},
-			
-			{ "path": "index",   "name": "Tab" }
-			]
-		},
-		{
-			"path": "table",
-			"name": "综合111实例",
-			"children": [
-			{
-				"path": "table",
-				"name": "Table",
-				"children": [
-				{ "path": "dynamictable",  "name": "动态table" },
-				{ "path": "dragtable",  "name": "拖拽table" },
-				{ "path": "inline_edit_table",  "name": "table内编辑" }
-				]
-			},
-			
-			{ "path": "index",   "name": "Tab" }
-			]
-		}]
-	next()
-	/* if(isAdd){
-		next()
-	}else{
-		if(to.path === '/login'){  //如果进入 login 页面 不需要 请求路由
-			next({ path: '/' })
-		}else{
-			//请求路由
-			axios.get('/api/router/router')
-				.then( (res) => {
-					isAdd = true
-					let data = res.data.router
-					formatRouter(data)
-					data.push({path:'*', redirect: '/404'})
-					console.log(data)
-					
-					router.addRoutes(data)
-					console.log(router)
-						
-					next({...to})
-				})
-				.catch( (err) => {
-					console.log(err)
-				})
-		}
-	} */
-})
+
 
 
 //遍历 动态路由 

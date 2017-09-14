@@ -22,13 +22,13 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 
-var appData = require('../src/router/router.json')
+/*var appData = require('../src/router/router.json')
 var apiRoutes = express.Router();
 apiRoutes.get('/router/router',function(req,res){
   res.json(appData)
-});
+});*/
 
-app.use('/api',apiRoutes);
+//app.use('/api',apiRoutes);
 
 var compiler = webpack(webpackConfig)
 
