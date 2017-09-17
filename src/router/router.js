@@ -2,6 +2,15 @@ export default {
   "msg": "ok",
   "code": 0,
   "router": [
+    { path: 'charts', cname: '图表',
+      children: [
+        { path: 'index', cname: 'chart_介绍' },
+        { path: 'keyboard', cname: '键盘图表' },
+        { path: 'keyboard2',  cname: '键盘图表2' },
+        { path: 'line',  cname: '折线图' },
+        { path: 'mixchart',  cname: '混合图表' }
+      ]
+    },
     { path: 'components', cname: '组件',
       children: [
         { path: 'index', cname: '介绍 '},
@@ -18,15 +27,6 @@ export default {
     { path: 'permission', cname: '权限测试',
       children: [
         { path: 'index', cname: '权限测试页'}
-      ]
-    },
-    { path: 'charts', cname: '图表',
-      children: [
-        { path: 'index', cname: '介绍' },
-        { path: 'keyboard', cname: '键盘图表' },
-        { path: 'keyboard2',  cname: '键盘图表2' },
-        { path: 'line',  cname: '折线图' },
-        { path: 'mixchart',  cname: '混合图表' }
       ]
     },
     { path: 'example', cname: '综合实例',

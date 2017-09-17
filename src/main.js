@@ -38,11 +38,12 @@ const formatRouter = function (arr, path, map){
 		}
 		if ( arr[i].children && arr[i].children.length ) {
 			arr[i].component = () => import('@/components/Hello.vue')
+			arr[i].redirect = arr[i].$cpath + '/' + arr[i].children[0].path
 			formatRouter(arr[i].children, arr[i].$cpath, map)
 		}else{
-			//arr[i].component = () => import('@/components/markdown.vue')
-			arr[i].component = () => import('@' + arr[i].$cpath + '.vue')
+			arr[i].component = () => import('./components' + arr[i].$cpath + '.vue')
 		}
+
 	}
 	return arr
 }
