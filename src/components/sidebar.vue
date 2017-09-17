@@ -1,11 +1,11 @@
 <template>
 	<li>
 		<template v-if="haschildren">
-			<h3>{{sidebar.name}}</h3>
-			<sidebar v-for="item in sidebar.children" :key="item.name" :sidebar="item"></sidebar>
+			<h3>{{sidebar.cname}}</h3>
+			<sidebar v-for="item in sidebar.children" :key="item.cname" :sidebar="item"></sidebar>
 		</template>
 		<template v-else>
-			<li>{{sidebar.name}}</li>
+			<router-link :to="sidebar.$cpath">{{sidebar.cname}}</router-link>
 		</template>
 	</li>
 </template>
@@ -30,6 +30,11 @@
 			}
 		},
 		created(){
+		},
+		methods:{
+			routeTo(sidebar){
+				this.$router.push({path:sidebar.path})
+			}
 		}
 	}
 </script>

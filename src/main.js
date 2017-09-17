@@ -12,19 +12,39 @@ import './styles/common.css';
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 let isAdd = false
+import anycRouter from '@/router/router' 
 
-
+router.beforeEach((to, from, next) => {
+	if (isAdd) { 
+		next()
+	} else {
+		isAdd = true
+		const routerArr = formatRouter(anycRouter.router,'', 0)
+		
+		console.log(routerArr)
+		routerArr.push({path:'/',redirect: routerArr[0].path })
+		router.addRoutes(routerArr) 
+		next({...to})
+	}
+  });
 
 //遍历 动态路由 
-const formatRouter = function (arr, path){
+const formatRouter = function (arr, path, map){
+	map++
 	for (let i = 0; i < arr.length; i++) {
-		//arr[i].component =  (() => import('@/components/Hello'))
+		arr[i].$cpath = path + '/' + arr[i].path
+		if(map == 1){
+			arr[i].path = '/' + arr[i].path
+		}
 		if ( arr[i].children && arr[i].children.length ) {
-			formatRouter(arr[i].children)
+			arr[i].component = () => import('@/components/Hello.vue')
+			formatRouter(arr[i].children, arr[i].$cpath, map)
 		}else{
-			arr[i].component = () => import('@/components/' + arr[i].path + '.vue')
+			//arr[i].component = () => import('@/components/markdown.vue')
+			arr[i].component = () => import('@' + arr[i].$cpath + '.vue')
 		}
 	}
+	return arr
 }
 /* eslint-disable no-new */
 new Vue({

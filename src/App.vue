@@ -20,7 +20,6 @@ export default {
   color: #2c3e50;
 }
 html,body{
-  overflow: hidden;
   height: 100%;
   width:100%;
 }

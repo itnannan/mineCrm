@@ -9,11 +9,8 @@
 export default {
   data () {
     return {
-      msg: '404'
+      msg: 'index'
     }
-  },
-  created(){
-    console.log(this.$router)
   }
 }
 </script>

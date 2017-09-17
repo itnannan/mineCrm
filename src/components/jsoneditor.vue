@@ -1,3 +1,4 @@
+
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
@@ -9,11 +10,8 @@
 export default {
   data () {
     return {
-      msg: '404'
+      msg: 'jsoneditor'
     }
-  },
-  created(){
-    console.log(this.$router)
   }
 }
 </script>

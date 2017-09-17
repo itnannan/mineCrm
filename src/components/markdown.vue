@@ -1,6 +1,8 @@
+
 <template>
   <div class="hello">
-    
+    <h1>{{ msg }}</h1>
+    <h2>sdafasdfasdfasdfsdafsadf</h2>
   </div>
 </template>
 
@@ -8,7 +10,7 @@
 export default {
   data () {
     return {
-      msg: 'table'
+      msg: 'markdown'
     }
   }
 }

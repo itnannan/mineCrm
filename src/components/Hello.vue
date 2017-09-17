@@ -1,17 +1,25 @@
 <template>
   <div class="hello">
+    <yfc-header></yfc-header>
     <ul class="nav-menu">
       <li v-for="(item, index) in routers" @click="routerTo(index)" class="menu-item">
-      {{item.name}}
+      {{item.cname}}
       </li>
     </ul>
-    <example :items="routers[index]"></example>
+    <div class="mid clearfix">
+      <ul class="mid-ul">
+        <sidebar :sidebar="routers[index]">
+        </sidebar>
+      </ul>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
 import routers from '@/router/router'
-import example from './example'
+import sidebar from './sidebar'
+import yfcHeader from './main/header'
 export default {
   name: 'hello',
   data () {
@@ -26,13 +34,16 @@ export default {
     }
   },
   created(){
-   
+   console.log(this.$router)
   },
   components:{
-    example
+    sidebar,
+    yfcHeader
   },
   methods:{
     routerTo(index){
+      
+      this.$router.push({path: this.routers[index].path})
       this.index = index
     }
   }
@@ -64,5 +75,32 @@ export default {
   background: #fff;
   color:#dc2828;
 }
+.mid{
+  margin-left: 80px;
+  height:100%;
+  text-align: left;
+  
+}
 
+.mid-ul{
+   float: left;
+   padding-left: 20px;
+  width:120px;
+  height:100%;
+  background:#ffffff;
+}
+.item-level .leavl-h{
+  font-size:14px;
+  color:#333;
+  font-weight: bold;
+  padding:30px 0 16px 0;
+}
+.mid-ul2 .item-level2{
+  font-size: 14px;
+  color:#666666;
+  padding-bottom: 20px;
+}
+.mid-ul2 .item-level2:last-child{
+  padding-bottom: 0px;
+}
 </style>
