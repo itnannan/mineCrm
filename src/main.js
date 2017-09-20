@@ -20,32 +20,49 @@ router.beforeEach((to, from, next) => {
 	} else {
 		isAdd = true
 		const routerArr = formatRouter(anycRouter.router,'', 0)
-		
+		routerArr.push({
+			path: '/',
+			redirect: anycRouter.router[0].$cpath
+		})
 		console.log(routerArr)
-		routerArr.push({path:'/',redirect: routerArr[0].path })
-		router.addRoutes(routerArr) 
+		router.addRoutes([
+			{
+				path:'/',
+				component: () => import('@/components/layout.vue'),
+				redirect: routerArr[0].path,
+				children: routerArr
+			}
+		]) 
 		next({...to})
 	}
   });
 
 //遍历 动态路由 
+const res = []
+let index = 0
 const formatRouter = function (arr, path, map){
 	map++
 	for (let i = 0; i < arr.length; i++) {
 		arr[i].$cpath = path + '/' + arr[i].path
-		if(map == 1){
-			arr[i].path = '/' + arr[i].path
-		}
+		
 		if ( arr[i].children && arr[i].children.length ) {
-			arr[i].component = () => import('@/components/Hello.vue')
-			arr[i].redirect = arr[i].$cpath + '/' + arr[i].children[0].path
+			res.push({
+				path: arr[i].$cpath,
+				redirect: arr[i].$cpath + '/' + arr[i].children[0].path
+			})
 			formatRouter(arr[i].children, arr[i].$cpath, map)
 		}else{
-			arr[i].component = () => import('./components' + arr[i].$cpath + '.vue')
+			res.push({
+				path: arr[i].$cpath,
+				component: () => import('@/components' + arr[i].$cpath + '.vue')
+			})
 		}
-
+		if(map == 1){
+			arr[i].path = '/' + arr[i].path
+			arr[i].index = index++
+		}
 	}
-	return arr
+	return res
 }
 /* eslint-disable no-new */
 new Vue({

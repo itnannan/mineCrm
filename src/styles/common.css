@@ -8,8 +8,7 @@ h1,h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
 body{ color:#666; background:#fff; font-size:12px; font:12px/22px Arial,Verdana, "\5b8b\4f53",sans-serif,"Hiragino Sans GB", "Microsoft YaHei", tahoma; text-align:left; -webkit-font-smoothing:antialiased;}
 table{ border-collapse:collapse; border-spacing:0; font-size:inherit; font:100%;}
 a{ text-decoration:none; cursor:pointer; outline:none; color:#666;}
-a:hover{color:#fc301f;text-decoration:none;}
-a:active{color:#fc301f;}
+
 .clearfix:after{ content:"."; display:block; height:0; clear:both; visibility:hidden;}
 *+html .clearfix { overflow:hidden;}
 * html .clearfix { height: 1%;}
